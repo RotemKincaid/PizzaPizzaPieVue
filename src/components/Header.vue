@@ -25,6 +25,7 @@
   justify-content: space-around;
   padding: 10px;
   border-bottom: 4px solid #ffffff;
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
 .logo {

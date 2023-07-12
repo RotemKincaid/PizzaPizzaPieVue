@@ -37,9 +37,8 @@ export default {
 
 <template>
   <div class="pizzas">
-    <h1>pizza list</h1>
+    <h1 class="title">Pizza List</h1>
     <div v-for="(pizza, index) in pizzas" :key="index">
-      <!-- {{ pizza.name }} -->
       <Pizza :name="pizza.name" :toppings="pizza.toppings" />
     </div>
     <div>Add New</div>
@@ -50,6 +49,10 @@ export default {
 <style>
   h1 {
     text-align: center;
+  }
+  .title {
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    /* letter-spacing: 1px; */
   }
   @media (min-width: 1024px) {
     .pizza {

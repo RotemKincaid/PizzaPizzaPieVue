@@ -20,9 +20,10 @@
    justify-content: center;
    align-items: center;
    margin-top: 30px;
+   font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   }
    .pizza-img {
-      width: 500px;
+      width: 600px;
       margin-bottom: 30px;
    }
 
@@ -46,7 +47,7 @@
    }
    @media (max-width: 1024px) {
       .pizza-img {
-         width: 250px;
+         width: 380px;
       }
    }
 </style>

@@ -2,22 +2,17 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const cors = require('cors')
 const morgan = require('morgan')
+const { sequelize } = require('./models')
+const config = require('./config/config') 
 
 const app = express()
 app.use(morgan('combined'))
 app.use(bodyParser.json())
 app.use(cors())
 
-app.get('/pizzas/all', (req, res) => {
-    res.send({
-        message: "pizzas should be here!!!"
-    })
-})
+require('./routes')(app)
 
-app.delete('/pizzas/delete', (req, res) => {
-    res.send({
-        message: `pizza ${req.body.id} will be deleted when you put the missing logic in here`
-    })
+sequelize.sync().then(() => {
+  app.listen(config.port)
+  console.log(`Server started on port ${config.port}`)
 })
-
-app.listen(process.env.PORT || 8080)

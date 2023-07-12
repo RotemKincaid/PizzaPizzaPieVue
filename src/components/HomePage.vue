@@ -8,7 +8,7 @@
       <h3>The best pizza management app in the world</h3>
       <img class="pizza-img" src="@/assets/images/pizza.jpg" alt=""/>
       <RouterLink to="/pizzas">
-        <button class="btn">Explore Pizzas</button>
+        <button class="btn">Manage Pizzas</button>
       </RouterLink>
     </div>
 </template>

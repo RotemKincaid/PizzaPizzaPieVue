@@ -17,24 +17,18 @@
 
 <style scoped>
 .header {
-  /* position: fixed; */
+  background-color: rgb(1, 95, 1);
   width: 100vw;
   height: 100px;
-  /* width: 700px; */
   display: flex;
   align-items: center;
   justify-content: space-around;
   padding: 10px;
-  /* margin-bottom: 10px; */
-
-  border-bottom: 5px solid #ffffff;
+  border-bottom: 4px solid #ffffff;
 }
 
 .logo {
   width: 150px;
-  /* margin-right: 15px; */
-  /* text-align: center;
-  margin-bottom: 0.5rem; */
 }
 
 a,
@@ -65,10 +59,8 @@ a,
 }
 
 .nav-links a {
-  /* display: inline-block; */
   padding: 0 1rem;
   text-decoration: none;
-  /* border-left: 1px solid var(--color-border); */
 }
 
 .nav-links a:first-of-type {

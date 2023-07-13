@@ -1,5 +1,9 @@
-import { ref, computed } from 'vue'
 import { defineStore } from 'pinia'
+
+export type Pizza = {
+  name: string,
+  toppings: string[]
+}
 
 export const usePizzaStore = defineStore({
   id: "pizzaStore",
@@ -28,17 +32,14 @@ export const usePizzaStore = defineStore({
     ]
   }),
   actions: {
-    addPizza (pizza: any) {
+    addPizza (pizza: Pizza) {
       this.pizzas.push(pizza)
     },
-    updatePizza(id: string, payload: any) {
-      if (!id || !payload) return;
+    updatePizza(oldName: string, pizza: Pizza) {
+      if (!oldName) return;
 
-      const index = this.findIndexByName(id);
-
-      // if (index !== -1) {
-      //   this.pizzas[index] = Math.random() * 10;
-      // }
+      const index = this.findIndexByName(oldName);
+      this.pizzas[index] = pizza
     },
     deletePizza(name: string) {
       const index = this.findIndexByName(name);

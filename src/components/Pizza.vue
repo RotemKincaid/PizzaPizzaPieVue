@@ -1,14 +1,19 @@
 <script lang="ts">
 import { usePizzaStore } from '../stores/pizza'
+
   export default {
     props: {
-        name: String,
-        toppings: Array
+      name: String,
+      toppings: Array
     },
     methods: {
       deletePizza (name: string) {
         const store = usePizzaStore()
         store.deletePizza(name)
+      },
+      handleUpdate() {
+        console.log(this.name, this.toppings)
+        this.$emit('update', { name: this.name, toppings: this.toppings})
       }
     }
   }
@@ -16,13 +21,15 @@ import { usePizzaStore } from '../stores/pizza'
 
 <template>
   <div class="card">
-    <div class="delete" @click="deletePizza(name)">X</div>
-    <h2 class="name">{{ name }}</h2>
+    <h2 class="name">{{ name }} <span class="edit"><font-awesome-icon :icon="['fasl', 'pen-to-square']" @click="handleUpdate()"/> </span></h2>
+    
     <div class="card">
         <span class="topping" :key="idx" v-for="(topping, idx) in toppings">
-            <span>{{ topping }}</span><span>{{ toppings?.indexOf(topping) !== toppings?.length - 1 ? ', ' : ''}}</span>
+            <span>{{ topping }}</span><span>{{ toppings.indexOf(topping) !== toppings.length - 1 ? ', ' : ''}}</span>
         </span>
     </div>
+    <font-awesome-icon :icon="['fasl', 'trash-can']" @click="deletePizza(name)" class="delete" />
+
   </div>
 </template>
 
@@ -39,7 +46,6 @@ import { usePizzaStore } from '../stores/pizza'
 
 .card h2 {
   font-size: 1.5rem;
-  margin-top: 0;
   text-align: center;
 }
 
@@ -47,15 +53,15 @@ import { usePizzaStore } from '../stores/pizza'
   margin-top: 1rem;
 }
 
-.name {
-    color: #000;
-}
-
-.topping {
-    width: 80px;
+.edit {
+  padding-left: 10px;
+  cursor: pointer;
 }
 
 .delete {
   cursor: pointer;
+  position: relative;
+  left: 673px;
+  /* bottom: 2px; */
 }
 </style>

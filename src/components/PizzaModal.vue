@@ -49,7 +49,6 @@ export default {
       }
     },
     updatePizza () {
-        console.log("Pizza to change:  ", this.tempName, this.tempToppings)
         this.$emit('update', {name: this.tempName, toppings: this.tempToppings })
     },
     updateName (name: string) {
@@ -63,7 +62,7 @@ export default {
 
 <template>
      <div className='modal'>
-        <div className='overlay'>
+        <div className='overlay' @click="$emit('close')">
             <div className="modal-content">
               <div class="close" @click="$emit('close')">x</div>
 

@@ -31,6 +31,12 @@ export default {
   methods: {
     toggleModal () {
       this.isModalOpen = !this.isModalOpen
+      if (this.isModalOpen) {
+        document.body.classList.add("modal-open")
+      } else {
+        document.body.classList.remove("modal-open")
+      }
+
     },
     add (newPizza: Pizza) {
       console.log(newPizza)
@@ -107,6 +113,10 @@ export default {
   color: #fff;
   margin: 30px 0;
   text-align: center;
+}
+
+.modal-open {
+  overflow: hidden;
 }
 
   @media (min-width: 1024px) {

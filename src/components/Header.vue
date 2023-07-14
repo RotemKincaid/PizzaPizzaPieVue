@@ -11,8 +11,19 @@
           <RouterLink to="/">Home</RouterLink>
           <RouterLink to="/pizzas">Pizzas</RouterLink>
           <RouterLink to="/toppings">Toppings</RouterLink>
-          <font-awesome-icon :icon="['fasl', 'bars']" class="icon" />
+       
         </div>
+        <div class="icons">
+            <RouterLink to="/">
+              <font-awesome-icon class="icon" :icon="['fasl', 'house']" />
+            </RouterLink>
+            <RouterLink to="/pizzas">
+              <font-awesome-icon class="icon" :icon="['fasl', 'pizza-slice']" />
+            </RouterLink>
+            <RouterLink to="/toppings">
+              <font-awesome-icon class="icon" :icon="['fasl', 'pepper-hot']" />
+            </RouterLink>
+          </div>
     </div>
 </template>
 
@@ -24,12 +35,12 @@
   display: flex;
   align-items: center;
   justify-content: space-around;
-  padding: 10px;
+  /* padding: 10px; */
   border-bottom: 4px solid #ffffff;
 }
 
-.icon {
-  /* display: none; */
+.icons {
+  display: none;
 }
 
 .logo {
@@ -42,16 +53,9 @@ a {
   transition: 0.4s;
 }
 
-/* .logo a {
-  font-size: 1.5rem;
-  font-weight: bold;
-  text-decoration: none;
-} */
 .nav-links {
-  /* width: 200px; */
   font-size: 18px;
   text-align: center;
-  /* margin: 2rem; */
 }
 
 .nav-links a.router-link-exact-active {
@@ -74,44 +78,37 @@ a {
 @media only screen and (max-width: 600px) {
   .header {
     height: 100px;
-    /* width: 100vw; */
+    width: 390px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     border-bottom: 5px solid #ffffff;
-
-    /* padding-right: calc(var(--section-gap) / 2); */
   }
 
-  /* .logo {
-    margin: 0 2rem 0 0;
-  } */
-
-  /* .header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  } */
-
   .logo {
-    width: 100px;
+    height: 100px;
+    width: auto;
+    margin-left: 20px;
   }
   .nav-links a {
     display: none;
   }
-  .nav-links .icon {
+  .icons {
     float: right;
     display: block;
-    width: 80px;
+    width: 160px;
     height: 30px;
+    margin-top: 10px;
+    margin-right: 30px;
   }
-  /* { */
-    /* text-align: left; */
-    /* margin-left: -1rem; */
-    /* font-size: 1rem; */
 
-    /* padding: 1rem 0; */
-    /* margin-top: 1rem; */
-  /* } */
+  .icons a.router-link-exact-active {
+    color: rgb(248, 74, 11);
+  }
+
+  .icon {
+    margin-left: 30px;
+    height: 20px;
+  }
 }
 </style>

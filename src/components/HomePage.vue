@@ -56,11 +56,14 @@
 
    }
    @media only screen and (max-width: 600px) {
-      .home-wrapper {
-         padding-left: 15px;
+      h1 {
+         font-size: 28px;
+      }
+      h1, h3 {
+         width: 80%;
       }
       .pizza-img {
-         width: 240px;
+         width: 300px;
       }
 
       .btns {

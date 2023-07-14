@@ -115,6 +115,21 @@ export default {
   background: rgba(49, 49, 49, 0.767);
   z-index: 0;
 }
+
+.close {
+  position: absolute;
+  top: 5px; left: 15px;
+}
+.add-pizza {
+  width: 40%;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 13px;
+  background-color: rgb(91, 18, 3);
+  color: #fff;
+  margin: 30px 0;
+  text-align: center;
+}
 .modal-content {
   position: absolute;
   top: 40%;

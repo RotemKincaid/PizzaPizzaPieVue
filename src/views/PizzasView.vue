@@ -29,14 +29,13 @@ export default {
     }
   },
   methods: {
-    toggleModal () {
-      this.isModalOpen = !this.isModalOpen
-      if (this.isModalOpen) {
-        document.body.classList.add("modal-open")
-      } else {
-        document.body.classList.remove("modal-open")
-      }
-
+    closeModal () {
+      document.body.classList.remove("modal-open")
+      this.isModalOpen = false
+    },
+    openModal () {
+      document.body.classList.add("modal-open")
+      this.isModalOpen = true
     },
     add (newPizza: Pizza) {
       console.log(newPizza)
@@ -46,14 +45,14 @@ export default {
     },
     handleUpdatePizzaInfo (pizza: Pizza) {
       this.isEditing = true
-      this.toggleModal()
+      this.openModal()
       const { name, toppings } = pizza
       this.nameToEdit = name
       this.toppingsToEdit = toppings
     },
     update (pizza: Pizza) {
       this.isEditing = false
-      this.toggleModal()
+      this.closeModal()
       const store = usePizzaStore() 
       store.updatePizza(this.nameToEdit, pizza)
     }
@@ -68,22 +67,21 @@ export default {
     <div v-for="(pizza, index) in pizzas" :key="index">
       <PizzaComponent :name="pizza.name" :toppings="pizza.toppings" @update="handleUpdatePizzaInfo($event)"/>
     </div>
-    <div @click="toggleModal" class="add-new">Add New +</div>
+    <div @click="openModal()" class="add-new">Add New +</div>
     <div v-if="isModalOpen">
-     <PizzaModal @close="toggleModal()" @add="add($event)" :editing="isEditing" :existingName="isEditing ? nameToEdit : ''" :existingToppings="isEditing ? toppingsToEdit : []" @update="update($event)"/>
+     <PizzaModal @close="closeModal()" @add="add($event)" :editing="isEditing" :existingName="isEditing ? nameToEdit : ''" :existingToppings="isEditing ? toppingsToEdit : []" @update="update($event)"/>
     </div>
   </div>
 </template>
 
-<style>
+<style scoped>
   .pizzas {
     width: 50%;
     margin: 0 auto;
   }
+
   h1 {
     text-align: center;
-  }
-  .title {
   }
 
 .add-new {
@@ -101,26 +99,27 @@ export default {
   left: 20px;
 }
 
-.add-pizza {
-  width: 40%;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  padding: 13px;
-  background-color: rgb(91, 18, 3);
-  color: #fff;
-  margin: 30px 0;
-  text-align: center;
-}
-
 .modal-open {
   overflow: hidden;
 }
 
-  @media (min-width: 1024px) {
-    .pizza {
+  @media only screen and (max-width: 600px) {
+    h1 {
+      font-size: 22px;
+      margin-top: 30px;
+    }
+
+    
+    .pizzas {
       min-height: 100vh;
       display: flex;
       align-items: center;
+      flex-direction: column;
+    }
+
+    .add-new {
+      font-size: 14px;
+      width: 80px;
     }
   }
 

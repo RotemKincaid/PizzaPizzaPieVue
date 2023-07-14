@@ -22,7 +22,7 @@ import { usePizzaStore } from '../stores/pizza'
   <div class="card">
     <h2 class="name">{{ name }} <span class="edit"><font-awesome-icon :icon="['fasl', 'pen-to-square']" @click="handleUpdate()"/> </span></h2>
     
-    <div class="card">
+    <div class="card inner-card">
         <span class="topping" :key="idx" v-for="(topping, idx) in toppings">
             <span>{{ topping }}</span><span>{{ toppings.indexOf(topping) !== toppings.length - 1 ? ', ' : ''}}</span>
         </span>
@@ -59,5 +59,23 @@ import { usePizzaStore } from '../stores/pizza'
   cursor: pointer;
   position: relative;
   left: 673px;
+}
+
+@media only screen and (max-width: 600px) {
+  .card {
+    width: 300px;
+    margin: 0.8rem;
+  }
+
+  .inner-card {
+    width: 240px;
+  }
+  .card h2 {
+    font-size: 18px;
+  }
+  .delete {
+    cursor: pointer;
+    left: 283px;
+  }
 }
 </style>

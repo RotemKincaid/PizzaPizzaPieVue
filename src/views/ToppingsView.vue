@@ -8,7 +8,6 @@ import Topping from '../components/Topping.vue'
     },
     data() {
       return {
-        toppingToAdd: '',
         isModalOpen: false,
         isEditing: false,
         existing: '',
@@ -24,20 +23,17 @@ import Topping from '../components/Topping.vue'
       displayedText () {
         return this.isEditing ? 'Edit Topping:' : 'Add Topping'
       },
-      model () {
-        return this.isEditing ? this.toppingToEdit : this.toppingToAdd
-      }
     }, 
     methods: {
-      addTopping (topping: string) {
+      addTopping () {
         const toppingStore = useToppingsStore()
-        if (this.toppings.includes(topping)) {
+        if (this.toppings.includes(this.toppingToEdit)) {
           this.errMessage = "This topping already exists! Try a different one"
         } else {
-          toppingStore.addTopping(topping)
+          toppingStore.addTopping(this.toppingToEdit)
           this.toggleToppingModal()
         }
-        this.toppingToAdd = ''
+        this.toppingToEdit = ''
       },
       toggleToppingModal() {
         this.isModalOpen = !this.isModalOpen
@@ -93,7 +89,7 @@ import Topping from '../components/Topping.vue'
               <div class="add-container">
                 <label for="new">{{ displayedText }}</label>
                 <input type="text" placeholder="new topping" :value="toppingToEdit" @change="setToppingToEdit($event.target.value)">
-                <div v-if="!isEditing" class="add-btn" @click="addTopping(toppingToAdd)">+</div>
+                <div v-if="!isEditing" class="add-btn" @click="addTopping()">+</div>
                 <div v-else class="add-btn" @click="updateTopping()">+</div>
                 <div class="error" v-if="errMessage.length">{{ errMessage }}</div>
               </div>
@@ -196,5 +192,22 @@ import Topping from '../components/Topping.vue'
     border-radius: 5px;
     cursor: pointer;
     text-align: center;
+  }
+
+  @media only screen and (max-width: 600px) {
+    h1 {
+      font-size: 22px;
+      margin-top: 30px;
+    }
+    .toppings-container {
+      grid-template-columns: repeat(1, 1fr);
+
+    }
+
+    .add-topping {
+      width: 80px;
+      font-size: 14px;
+      margin-bottom: 40px;
+    }
   }
 </style>

@@ -63,8 +63,6 @@ import { usePizzaStore } from '../stores/pizza'
 
 .delete {
   cursor: pointer;
-  position: relative;
-  left: 673px;
 }
 
 @media only screen and (max-width: 600px) {
@@ -78,10 +76,6 @@ import { usePizzaStore } from '../stores/pizza'
   }
   .card h2 {
     font-size: 18px;
-  }
-  .delete {
-    cursor: pointer;
-    left: 283px;
   }
 }
 

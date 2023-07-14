@@ -14,24 +14,25 @@ export const useToppingsStore = defineStore({
         'basil',
         'feta cheese',
         'onions',
+        'pineapple',
+        'garlic'
     ]
   }),
   actions: {
-    addTopping (topping: any) {
+    addTopping (topping: string) {
+      if (!topping.length) {
+        return
+      }
       this.toppings.push(topping)
     },
     updateTopping(id: string, payload: any) {
       if (!id || !payload) return;
 
       const index = this.findIndexById(id);
-
-      // if (index !== -1) {
-      //   this.pizzas[index] = Math.random() * 10;
-      // }
+      // TODO: Finish
     },
-    deleteTopping(id: string) {
-      const index = this.findIndexById(id);
-
+    deleteTopping(topping: string) {
+      const index = this.toppings.indexOf(topping)
       if (index === -1) return;
 
       this.toppings.splice(index, 1);

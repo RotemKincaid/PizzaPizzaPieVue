@@ -9,7 +9,8 @@ import Topping from '../components/Topping.vue'
     data() {
       return {
         toppingToAdd: '',
-        isModalOpen: false
+        isModalOpen: false,
+        errMessage: ''
       }
     },
     computed: {
@@ -20,13 +21,20 @@ import Topping from '../components/Topping.vue'
     }, 
     methods: {
       addTopping (topping: string) {
-        this.toggleToppingModal()
         const toppingStore = useToppingsStore()
-        toppingStore.addTopping(topping)
+        if (this.toppings.includes(topping)) {
+          this.errMessage = "This topping already exists! Try a different one"
+        } else {
+          toppingStore.addTopping(topping)
+          this.toggleToppingModal()
+        }
         this.toppingToAdd = ''
       },
       toggleToppingModal() {
         this.isModalOpen = !this.isModalOpen
+        if (this.isModalOpen) {
+          this.errMessage = ""
+        } 
       },
       deleteTopping (topping: string) {
         const toppingStore = useToppingsStore()
@@ -58,11 +66,12 @@ import Topping from '../components/Topping.vue'
                 <label for="new">Enter Topping:</label>
                 <input type="text" placeholder="new topping" v-model="toppingToAdd">
                 <div class="add-btn" @click="addTopping(toppingToAdd)">+</div>
+                <div class="error" v-if="errMessage.length">{{ errMessage }}</div>
+
               </div>
         </div>
       </div>
     </div>
-
     </div>
   </div>
 </template>
@@ -79,7 +88,9 @@ import Topping from '../components/Topping.vue'
     text-align: center;
     margin: 40px 0;
   }
-
+  .error {
+    color: red;
+  }
   .close {
     position: absolute;
     top: 5px;

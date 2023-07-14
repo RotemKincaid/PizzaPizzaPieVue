@@ -1,6 +1,6 @@
 <script lang="ts">
 import { useToppingsStore } from '../stores/toppings'
-import { usePizzaStore } from '../stores/pizza'
+
 export default {
  props: {
    editing: {
@@ -36,7 +36,7 @@ export default {
       }
       this.tempToppings.push(topping)
     },
-    removeTempTopping (topping: string) {
+    removeTempTopping (topping: any) {
         if (this.tempToppings.includes(topping)) {
             this.tempToppings = this.tempToppings.filter(tempTopping => topping !== tempTopping)
         }
@@ -51,9 +51,11 @@ export default {
     updatePizza () {
         this.$emit('update', {name: this.tempName, toppings: this.tempToppings })
     },
-    updateName (name: string) {
-        if (this.tempName !== name) {
-          this.tempName = name
+    updateName (event: any) {
+      if (!event.target.value) return
+      const { value } = event.target
+        if (this.tempName !== value) {
+          this.tempName = value
         }
     }
  }
@@ -68,10 +70,10 @@ export default {
 
               <label for="name"></label>
               <h3>Name:</h3>
-              <input type="text" :placeholder="existingName" :value="tempName" @input="updateName($event.target.value)">
+              <input type="text" :placeholder="existingName" :value="tempName" @input="updateName($event)">
               <div class="temp-topping-container"> 
                 <h3 v-if="tempToppings.length">Selected:</h3> 
-                <div v-for="topping in tempToppings" :key="topping" class="single-topping">
+                <div v-for="topping in tempToppings" :key="tempToppings.indexOf(topping)" class="single-topping">
                     <span> {{ topping }} </span> <span @click="removeTempTopping(topping)">X</span>
                 </div>
 

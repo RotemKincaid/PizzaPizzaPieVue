@@ -38,12 +38,11 @@ export default {
       this.isModalOpen = true
     },
     add (newPizza: Pizza) {
-      console.log(newPizza)
       const store = usePizzaStore() 
       store.addPizza(newPizza)
       this.isModalOpen = false
     },
-    handleUpdatePizzaInfo (pizza: Pizza) {
+    handleUpdatePizzaInfo (pizza: any) {
       this.isEditing = true
       this.openModal()
       const { name, toppings } = pizza

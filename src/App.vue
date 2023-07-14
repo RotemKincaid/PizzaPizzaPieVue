@@ -1,18 +1,16 @@
 <script setup lang="ts">
-import Header from '@/components/Header.vue'
+import Header from './components/Header.vue'
+import Footer from './components/Footer.vue'
+
 </script>
 
 <template>
+  <div>
     <Header />
     <RouterView />
-    <div class="footer"></div>
+    <Footer />
+  </div>
 </template>
 
 <style scoped>
-  .footer {
-    background-color: rgb(1, 95, 1);
-    width: 100vw;
-    height: 100px;
-    border-top: 3px solid #ffffff;
-  }
 </style>

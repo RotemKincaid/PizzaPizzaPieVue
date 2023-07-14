@@ -3,8 +3,14 @@ import { usePizzaStore } from '../stores/pizza'
 
   export default {
     props: {
-      name: String,
-      toppings: Array
+      name: {
+        type: String,
+        required: true
+      },
+      toppings: {
+        type: Array,
+        default: []
+      }
     },
     methods: {
       deletePizza (name: string) {

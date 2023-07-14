@@ -45,9 +45,10 @@ import Topping from '../components/Topping.vue'
         const toppingStore = useToppingsStore()
         toppingStore.deleteTopping(topping)
       },
-      setToppingToEdit (ev: string) {
-        if (this.toppingToEdit !== ev) {
-          this.toppingToEdit = ev
+      setToppingToEdit (ev: any) {
+        const { value } = ev.target
+        if (this.toppingToEdit !== value) {
+          this.toppingToEdit = value
         }
       },
       updateToppingInfo (event: string, existing: string) {
@@ -88,7 +89,7 @@ import Topping from '../components/Topping.vue'
               <div class="close" @click="toggleToppingModal()">x</div>
               <div class="add-container">
                 <label for="new">{{ displayedText }}</label>
-                <input type="text" placeholder="new topping" :value="toppingToEdit" @change="setToppingToEdit($event.target.value)">
+                <input type="text" placeholder="new topping" :value="toppingToEdit" @change="setToppingToEdit($event)">
                 <div v-if="!isEditing" class="add-btn" @click="addTopping()">+</div>
                 <div v-else class="add-btn" @click="updateTopping()">+</div>
                 <div class="error" v-if="errMessage.length">{{ errMessage }}</div>

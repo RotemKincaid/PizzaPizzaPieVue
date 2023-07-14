@@ -25,20 +25,17 @@ export const useToppingsStore = defineStore({
       }
       this.toppings.push(topping)
     },
-    updateTopping(id: string, payload: any) {
-      if (!id || !payload) return;
+    updateTopping(oldTopping: string, newTopping: string) {
+      if (!oldTopping || !newTopping) return;
 
-      const index = this.findIndexById(id);
-      // TODO: Finish
+      const index = this.toppings.indexOf(oldTopping)
+      this.toppings[index] = newTopping
     },
     deleteTopping(topping: string) {
       const index = this.toppings.indexOf(topping)
       if (index === -1) return;
 
       this.toppings.splice(index, 1);
-    },
-    findIndexById(id: string) {
-      return this.toppings.findIndex((item) => item.id === id);
-    },
+    }
   },
 })

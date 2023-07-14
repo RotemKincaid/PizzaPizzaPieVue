@@ -11,11 +11,15 @@ export default {
 
 <template>
     <div class="single-topping">
-        {{ topping }}<span class="delete" @click="$emit('remove', topping)">X</span>
+        {{ topping }}  
+        <div class="icons">
+            <span class="edit"><font-awesome-icon :icon="['fasl', 'pen-to-square']" @click="$emit('update',  topping)"/> </span>
+            <span class="delete" @click="$emit('remove', topping)">X</span>
+       </div>
       </div>
 </template>
 
-<style>
+<style scoped>
 .single-topping {
   border: 1px solid #ccc;
   border-radius: 5px;
@@ -28,7 +32,16 @@ export default {
   font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
+.icons {
+    display: inline;
+}
+
 .delete {
     cursor: pointer;
+}
+
+.edit {
+    cursor: pointer;
+    padding: 10px;
 }
 </style>

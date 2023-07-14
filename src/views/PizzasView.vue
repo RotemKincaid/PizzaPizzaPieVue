@@ -52,7 +52,6 @@ export default {
       this.toppingsToEdit = toppings
     },
     update (pizza: Pizza) {
-      console.log("Name to edit?: ", this.nameToEdit, "new pizza:", pizza)
       this.isEditing = false
       this.toggleModal()
       const store = usePizzaStore() 

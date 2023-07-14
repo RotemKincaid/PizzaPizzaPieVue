@@ -62,7 +62,7 @@ export default {
 
 <template>
      <div className='modal'>
-        <div className='overlay' @click="$emit('close')">
+        <div className='overlay'>
             <div className="modal-content">
               <div class="close" @click="$emit('close')">x</div>
 

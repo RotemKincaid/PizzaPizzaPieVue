@@ -10,6 +10,9 @@ import Topping from '../components/Topping.vue'
       return {
         toppingToAdd: '',
         isModalOpen: false,
+        isEditing: false,
+        existing: '',
+        toppingToEdit: '',
         errMessage: ''
       }
     },
@@ -17,6 +20,12 @@ import Topping from '../components/Topping.vue'
       toppings() {
         const toppingStore = useToppingsStore()
         return toppingStore.toppings
+      },
+      displayedText () {
+        return this.isEditing ? 'Edit Topping:' : 'Add Topping'
+      },
+      model () {
+        return this.isEditing ? this.toppingToEdit : this.toppingToAdd
       }
     }, 
     methods: {
@@ -39,6 +48,25 @@ import Topping from '../components/Topping.vue'
       deleteTopping (topping: string) {
         const toppingStore = useToppingsStore()
         toppingStore.deleteTopping(topping)
+      },
+      setToppingToEdit (ev: string) {
+        if (this.toppingToEdit !== ev) {
+          this.toppingToEdit = ev
+        }
+      },
+      updateToppingInfo (event: string, existing: string) {
+        this.isEditing = true
+        this.toggleToppingModal()
+        this.toppingToEdit = event
+        this.existing = existing
+      },
+      updateTopping () {
+        this.isEditing = false
+        this.toggleToppingModal()
+        const toppingStore = useToppingsStore()
+
+        toppingStore.updateTopping(this.existing, this.toppingToEdit)
+        this.toppingToEdit = ""
       }
     }
   }
@@ -49,7 +77,7 @@ import Topping from '../components/Topping.vue'
      <h1>Available Toppings</h1>
      <div class='toppings-container'>
         <div v-for="topping in toppings" :key="topping">
-            <Topping :topping="topping" @remove="deleteTopping($event)"/>
+            <Topping :topping="topping" @remove="deleteTopping($event)" @update="updateToppingInfo($event, topping)"/>
         </div>   
     </div>
 
@@ -63,11 +91,11 @@ import Topping from '../components/Topping.vue'
             <div className="modal-content">
               <div class="close" @click="toggleToppingModal()">x</div>
               <div class="add-container">
-                <label for="new">Enter Topping:</label>
-                <input type="text" placeholder="new topping" v-model="toppingToAdd">
-                <div class="add-btn" @click="addTopping(toppingToAdd)">+</div>
+                <label for="new">{{ displayedText }}</label>
+                <input type="text" placeholder="new topping" :value="toppingToEdit" @change="setToppingToEdit($event.target.value)">
+                <div v-if="!isEditing" class="add-btn" @click="addTopping(toppingToAdd)">+</div>
+                <div v-else class="add-btn" @click="updateTopping()">+</div>
                 <div class="error" v-if="errMessage.length">{{ errMessage }}</div>
-
               </div>
         </div>
       </div>

@@ -12,7 +12,6 @@ import { usePizzaStore } from '../stores/pizza'
         store.deletePizza(name)
       },
       handleUpdate() {
-        console.log(this.name, this.toppings)
         this.$emit('update', { name: this.name, toppings: this.toppings})
       }
     }
@@ -29,11 +28,10 @@ import { usePizzaStore } from '../stores/pizza'
         </span>
     </div>
     <font-awesome-icon :icon="['fasl', 'trash-can']" @click="deletePizza(name)" class="delete" />
-
   </div>
 </template>
 
-<style>
+<style scoped>
 .card {
   border: 1px solid #ccc;
   border-radius: 5px;
@@ -62,6 +60,5 @@ import { usePizzaStore } from '../stores/pizza'
   cursor: pointer;
   position: relative;
   left: 673px;
-  /* bottom: 2px; */
 }
 </style>

@@ -35,7 +35,6 @@
   display: flex;
   align-items: center;
   justify-content: space-around;
-  /* padding: 10px; */
   border-bottom: 4px solid #ffffff;
 }
 
@@ -78,7 +77,6 @@ a {
 @media only screen and (max-width: 600px) {
   .header {
     height: 100px;
-    width: 390px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -111,4 +109,12 @@ a {
     height: 20px;
   }
 }
+
+@media only screen and (max-width: 280px) {
+    .icon {
+    margin-left: 27px;
+    height: 15px;
+  }
+}
+
 </style>

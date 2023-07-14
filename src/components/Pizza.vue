@@ -78,4 +78,15 @@ import { usePizzaStore } from '../stores/pizza'
     left: 283px;
   }
 }
+
+@media only screen and (max-width: 280px) {
+  .card {
+    width: 200px;
+    margin: 0.8rem;
+    font-size: 14px;
+  }
+  .inner-card {
+    width: 140px;
+  }
+}
 </style>

@@ -201,13 +201,19 @@ import Topping from '../components/Topping.vue'
     }
     .toppings-container {
       grid-template-columns: repeat(1, 1fr);
-
     }
 
     .add-topping {
       width: 80px;
       font-size: 14px;
       margin-bottom: 40px;
+    }
+  }
+
+  @media only screen and (max-width: 280px) {
+    .add-topping {
+      width: 60px;
+      font-size: 11px;
     }
   }
 </style>

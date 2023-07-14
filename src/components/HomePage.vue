@@ -70,4 +70,10 @@
          margin: 0 auto;
       }
    }
+
+   @media only screen and (max-width: 280px) {
+      .pizza-img {
+         width: 200px;
+      }
+   }
 </style>

@@ -43,4 +43,10 @@ export default {
     cursor: pointer;
     padding: 10px;
 }
+
+@media only screen and (max-width: 280px) {
+    .single-topping {
+        font-size: 12px;
+    }
+}
 </style>

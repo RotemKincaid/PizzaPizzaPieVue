@@ -29,7 +29,6 @@ export default {
   color: #fff;
   display: flex;
   justify-content: space-between;
-  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
 .icons {

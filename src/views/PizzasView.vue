@@ -84,7 +84,6 @@ export default {
     text-align: center;
   }
   .title {
-    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   }
 
 .add-new {
@@ -94,7 +93,6 @@ export default {
   margin: 1.5rem;
   background-color: #3c6302;
   color: #fff;
-  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   cursor: pointer;
 }
 

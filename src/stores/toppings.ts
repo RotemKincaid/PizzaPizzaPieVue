@@ -1,4 +1,3 @@
-import { ref, computed } from 'vue'
 import { defineStore } from 'pinia'
 
 export const useToppingsStore = defineStore({
@@ -15,7 +14,10 @@ export const useToppingsStore = defineStore({
         'feta cheese',
         'onions',
         'pineapple',
-        'garlic'
+        'garlic',
+        'ginger',
+        'tofu',
+        'soy sauce'
     ]
   }),
   actions: {

@@ -6,10 +6,11 @@ import router from './router'
 import { createPinia } from 'pinia'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faPenToSquare, faTrashCan } from '@fortawesome/free-solid-svg-icons'
+import { faPenToSquare, faTrashCan, faBars } from '@fortawesome/free-solid-svg-icons'
 
 library.add(faPenToSquare)
 library.add(faTrashCan)
+library.add(faBars)
 
 const app = createApp(App)
 

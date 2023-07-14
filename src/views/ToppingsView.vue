@@ -109,7 +109,6 @@ import Topping from '../components/Topping.vue'
     display: flex;
     flex-direction: column;
     align-items: center;
-    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   }
 
   h1 {
@@ -143,7 +142,6 @@ import Topping from '../components/Topping.vue'
     bottom: 0;
     position: fixed;
     overflow: hidden;
-    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   }
 
   .add-container {
